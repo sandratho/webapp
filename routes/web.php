@@ -14,15 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('listings', [
+        'heading' => 'Latest listings',
+        'listings' => [
+            [
+                'id' => 1,
+                'title' => 'Listing I',
+                'description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et'
+            ],
+            [
+                'id' => 2,
+                'title' => 'Listing II',
+                'description' => 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et'
+            ]
+        ]
+    ]);
 });
 
-Route::get('/hello', function () {
-    return response ('<h1>Hello World<h1>', 200)
-        ->header('Content-Type', 'text/plain')
-        ->header('foo', 'bar');
-});
-
-Route::get('/posts/{id}', function($id){
-    return response('Post '. $id);
-});
